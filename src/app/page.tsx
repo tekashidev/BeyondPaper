@@ -1,9 +1,7 @@
-
+import Maincommunity from "@/components/maincommunity";
 
 export default function Home() {
   return (
-    <main>
-      
-    </main>
+      <Maincommunity/>
   );
 }
