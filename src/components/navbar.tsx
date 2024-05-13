@@ -10,6 +10,7 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { Separator } from "@/components/ui/separator";
 import { ThemeModeToggle } from "@/components/darkmode"
 
 
@@ -17,6 +18,7 @@ export function Navbar() {
   return (
     <div className="w-full flex flex-row place-content-end p-5">
         <NavigationMenu>
+          <h1 className="text-left"><span className="tracking-widest font-bold">Beyond</span> Paper</h1>
           <NavigationMenuList>
             <NavigationMenuItem>
               <Link href="/" legacyBehavior passHref>
@@ -25,6 +27,7 @@ export function Navbar() {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+            <Separator orientation="vertical"/>
             <NavigationMenuItem>
               <Link href="/books" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -32,6 +35,7 @@ export function Navbar() {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+            <Separator orientation="vertical"/>
             <NavigationMenuItem>
               <Link href="/friends" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -39,6 +43,7 @@ export function Navbar() {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+            <Separator orientation="vertical"/>
             <NavigationMenuItem>
               <Link href="/profile" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -46,6 +51,7 @@ export function Navbar() {
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
+            <Separator orientation="vertical"/>
             <NavigationMenuItem>
                 <ThemeModeToggle></ThemeModeToggle>
             </NavigationMenuItem>
@@ -54,29 +60,3 @@ export function Navbar() {
     </div>
   )
 }
-
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
-  return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 justify-items-end rounded-md p-3 mr-15 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none content-center">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground place-items-center">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
-  )
-})
-ListItem.displayName = "ListItem"
